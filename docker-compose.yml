@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  app:
+    build:
+      context: ./docker
+    ports:
+      - 8000:80
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
